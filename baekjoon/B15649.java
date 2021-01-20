@@ -15,21 +15,53 @@ import java.util.Scanner;
 수열은 사전 순으로 증가하는 순서로 출력해야 한다.
 */
 public class B15649 {
-    public int[] arr;
+    public static int[] num;
+    public static boolean[] isVisit;
+    public static int n, m;
 
-    public int rec(int n) {
-        if(n == 1) return n;
-        System.out.println(n);
-        return rec(n-1);
+    public static void func(int cnt) {
+        System.out.println("func("+cnt+")");
+        
+        System.out.print("num : ");
+        for(int idx : num){
+            System.out.print(idx + " ");
+        }
+        System.out.println(" ");
+        System.out.print("isVisit : ");
+        for(boolean idx : isVisit){
+            System.out.print(idx + " ");
+        }
+        System.out.println(" ");
+        
+
+        if(cnt == m){
+            for(int i : num){
+                System.out.print(i + " ");
+            }
+            System.out.println(" ");      
+            return;
+        }
+        for(int i=1; i<=n; i++){
+            if(isVisit[i])
+                continue;
+
+            num[cnt] = i;
+            isVisit[i] = true;
+            func(cnt+1);
+            isVisit[i] = false;
+        }
+         
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        int a, b;
+        n = scan.nextInt();
+        m = scan.nextInt();
 
-        a = scan.nextInt();
-        b = scan.nextInt();
-
+        num = new int[n];
+        isVisit = new boolean[n+1];
+        
+        func(0);
 
         scan.close();
 
