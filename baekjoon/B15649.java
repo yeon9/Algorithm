@@ -20,32 +20,18 @@ public class B15649 {
     public static int n, m;
 
     public static void func(int cnt) {
-        System.out.println("func("+cnt+")");
-        
-        System.out.print("num : ");
-        for(int idx : num){
-            System.out.print(idx + " ");
-        }
-        System.out.println(" ");
-        System.out.print("isVisit : ");
-        for(boolean idx : isVisit){
-            System.out.print(idx + " ");
-        }
-        System.out.println(" ");
-        
-
         if(cnt == m){
             for(int i : num){
                 System.out.print(i + " ");
             }
-            System.out.println(" ");      
+            System.out.println("");      
             return;
         }
-        for(int i=1; i<=n; i++){
+        for(int i=0; i<n; i++){
             if(isVisit[i])
                 continue;
 
-            num[cnt] = i;
+            num[cnt] = i+1;
             isVisit[i] = true;
             func(cnt+1);
             isVisit[i] = false;
@@ -58,8 +44,8 @@ public class B15649 {
         n = scan.nextInt();
         m = scan.nextInt();
 
-        num = new int[n];
-        isVisit = new boolean[n+1];
+        num = new int[m];
+        isVisit = new boolean[n];
         
         func(0);
 

@@ -11,19 +11,36 @@ public class B15650 {
          * 첫째 줄에 자연수 N과 M이 주어진다. (1 ≤ M ≤ N ≤ 8)
          */
     static int n, m;
-    static int[] num;
+    static int[] list;
     static boolean[] isVisit;
 
-    static void func(int cnt){
+    static void func(int cnt, int index){
+        if(cnt == m){
+            for(int idx : list){
+                System.out.print(idx + " ");
+            }
+            System.out.println("");
+            return;
+        }
 
+        for(int i=index; i<n; i++){
+            if(isVisit[i])
+                continue;
+            list[cnt] = i+1;
+            isVisit[i] = true;
+            func(cnt+1, i);
+            isVisit[i] = false;
+        }
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         n = scan.nextInt();
         m = scan.nextInt();
         
-        num = new int[n];
+        list = new int[m];
         isVisit = new boolean[n];
+
+        func(0, 0);
 
         scan.close();
     }
