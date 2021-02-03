@@ -9,16 +9,15 @@ public class B10871 {
         String second = br.readLine();
 
         String[] inputV = first.split(" ");
-        System.out.println(inputV[0] + ", " + inputV[1]);
 
         String[] arr = second.split(" ");
       
         for(int i=0; i<Integer.parseInt(inputV[0]); i++){
             if(Integer.parseInt(arr[i]) < Integer.parseInt(inputV[1]))
-                System.out.println(arr[i] + " ");
+                bw.write(arr[i] + " ");
         }
-        System.out.println(" ");
-        
+        bw.newLine();
+
         bw.flush();
         bw.close();
     }
